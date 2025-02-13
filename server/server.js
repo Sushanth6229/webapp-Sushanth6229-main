@@ -74,13 +74,16 @@ app.get('/api/restaurants', async (req, res) => {
 app.get('/api/restaura/nearby', async (req, res) => {
   const { latitude, longitude, maxDistance = 3000 } = req.query;
 
-  if (!latitude || !longitude) {
-    console.error('Latitude and longitude are required');
-    return res.status(400).json({ message: 'Latitude and longitude are required' });
+  // Convert to float and validate
+  const lat = parseFloat(latitude);
+  const lng = parseFloat(longitude);
+  const maxDist = parseFloat(maxDistance);
+
+  if (isNaN(lat) || isNaN(lng) || isNaN(maxDist)) {
+    return res.status(400).json({ message: "Invalid latitude, longitude, or maxDistance" });
   }
 
   try {
-    // Query nearby restaurants using MongoDB's geospatial `$near` query
     const nearbyRestaurants = await Restaurant.find({
       location: {
         $near: {
@@ -91,18 +94,17 @@ app.get('/api/restaura/nearby', async (req, res) => {
           $maxDistance: parseFloat(maxDist), // Ensure it's a float
         },
       },
-    }).limit(10); 
-
+    }).limit(10); // Limit to 10 results for better performance
+    
     if (!nearbyRestaurants.length) {
       return res.status(404).json({ message: 'No restaurants found within the specified range' });
     }
 
     console.log(`Found ${nearbyRestaurants.length} restaurants nearby`);
-
     res.json({ restaurants: nearbyRestaurants });
   } catch (error) {
     console.error('Error in Location Search:', error);
-    res.status(500).json({ message: 'Failed to fetch nearby restaurants' });
+    res.status(500).json({ message: 'Failed to fetch nearby restaurants', error: error.message });
   }
 });
 
