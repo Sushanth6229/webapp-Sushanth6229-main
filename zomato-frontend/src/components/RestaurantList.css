@@ -75,7 +75,7 @@ body {
 
 
 
-.restaurant-item {
+ .restaurant-item {
     position: relative; /* Position relative for absolute positioning of text */
     display: flex;
     align-items: center;
@@ -84,19 +84,23 @@ body {
     background-color: #d9534f; /* Light background for restaurant items */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Hide overflow for zoom effect */
+    transition: background-color 0.3s;
     transition: transform 0.3s; /* Smooth transition for zoom effect */
-    
-}
+    height: 300px;
+    overflow: hidden;
+} 
+
 
 .restaurant-item:hover {
     transform: scale(1.03); /* Zoom effect on hover */
+    overflow: hidden;
+    height: 300px;
 }
 
+
 .restaurant-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the entire area */
+    width: 400px;
+    object-fit:contain; /* Cover the entire area */
     border-radius: 5px;
 }
 
@@ -160,3 +164,20 @@ body {
 .pagination-info {
     font-size: 1.1em;
 }
+.loading {
+    text-align: center;
+    font-size: 1.5em;
+    color: #007bff;
+  }
+  
+  .error-message {
+    text-align: center;
+    font-size: 1.5em;
+    color: #dc3545; /* Bootstrap danger color */
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c6cb; /* Border color */
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0; /* Margin for spacing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
