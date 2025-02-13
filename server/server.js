@@ -5,9 +5,8 @@ import Restaurant from './models/Restaurant.js'; // Ensure this model file exist
 
 const app = express();
 const PORT = 4000;
-
 mongoose
-  .connect('mongodb://127.0.0.1:27017/zomatoDB', {
+  .connect('mongodb+srv://sushanthnandivelugu:Rlhs6229@zomato.h1pah.mongodb.net/?retryWrites=true&w=majority&appName=zomato', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
