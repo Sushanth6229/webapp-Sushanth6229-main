@@ -8,7 +8,7 @@ function RestaurantDetail() {
   const [restaurant, setRestaurant] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/restaurants/${id}`)
+    axios.get(`https://webapp-sushanth6229-main.onrender.com/api/restaurants/${id}`)
       .then(response => {
         if (response.data) {
           setRestaurant(response.data);

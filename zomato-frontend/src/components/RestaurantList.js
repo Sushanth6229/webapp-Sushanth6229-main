@@ -21,7 +21,7 @@ function RestaurantList() {
   const fetchRestaurants = (currentPage) => {
     setLoading(true);
     axios
-      .get(`http://localhost:4000/api/restaurants?page=${currentPage}&limit=${limit}`)
+      .get(`https://webapp-sushanth6229-main.onrender.com/api/restaurants?page=${currentPage}&limit=${limit}`)
       .then((response) => {
         setRestaurants(response.data.restaurants);
         setTotalPages(response.data.totalPages);
