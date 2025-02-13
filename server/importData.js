@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import fs from 'fs';
 import Restaurant from './models/Restaurant.js';
 
-const dbURI = 'mongodb://localhost:27017/zomatoDB';
+const dbURI = 'mongodb+srv://sushanthnandivelugu:Rlhs6229@zomato.h1pah.mongodb.net/?retryWrites=true&w=majority&appName=zomato';
 
 mongoose
   .connect(dbURI)
@@ -11,7 +11,7 @@ mongoose
 
 const importData = async () => {
   try {
-    const data = JSON.parse(fs.readFileSync('file5.json', 'utf-8'));
+    const data = JSON.parse(fs.readFileSync('file1.json', 'utf-8'));
 
     if (!Array.isArray(data) || data.length === 0) {
       throw new Error('Invalid JSON structure: Expected an array at the root.');

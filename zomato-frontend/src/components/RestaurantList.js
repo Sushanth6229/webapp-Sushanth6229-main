@@ -52,7 +52,7 @@ function RestaurantList() {
     const formattedLongitude = parseFloat(longitude).toFixed(6);
 
     axios
-      .get(`http://localhost:4000/api/restaura/nearby`, {
+      .get(`https://webapp-sushanth6229-main.onrender.com/api/restaura/nearby`, {
         params: {
           latitude: formattedLatitude,
           longitude: formattedLongitude,
