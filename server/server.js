@@ -5,6 +5,7 @@ import Restaurant from './models/Restaurant.js'; // Ensure this model file exist
 
 const app = express();
 const PORT = 4000;
+
 mongoose
   .connect('mongodb+srv://sushanthnandivelugu:Rlhs6229@zomato.h1pah.mongodb.net/?retryWrites=true&w=majority&appName=zomato', {
     useNewUrlParser: true,
@@ -107,6 +108,7 @@ app.get('/api/restaura/nearby', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch nearby restaurants', error: error.message });
   }
 });
+
 
 // Start the server
 app.listen(PORT, () => {
