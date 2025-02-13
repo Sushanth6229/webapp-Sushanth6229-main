@@ -86,12 +86,12 @@ app.get('/api/restaura/nearby', async (req, res) => {
         $near: {
           $geometry: {
             type: "Point",
-            coordinates: [parseFloat(longitude), parseFloat(latitude)],
+            coordinates: [parseFloat(lng), parseFloat(lat)], // Ensure it's a float
           },
-          $maxDistance: parseFloat(maxDistance),
+          $maxDistance: parseFloat(maxDist), // Ensure it's a float
         },
       },
-    });
+    }).limit(10); 
 
     if (!nearbyRestaurants.length) {
       return res.status(404).json({ message: 'No restaurants found within the specified range' });
